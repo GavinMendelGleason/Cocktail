@@ -30,11 +30,11 @@ Cocktail> :help
 :term		Show the present term
 Cocktail> 
 ```
-# File Syntax
+## Syntax
 
 The intended syntax is given by the following more common symbolic forms on the right. 
 
-* Terms
+### Terms
 ```
 \ x : (A) . r := λx : A.r
 inr(r,A)      := right(r, A)
@@ -47,7 +47,7 @@ split t as (x,y) in {r} := split t as (x, y) in r
 fold(r,A) := inα(r, A)
 unfold(r,A) := outα(r, A)
 ```
-* Types
+### Types
 ```
 A * B     := A × B
 A+B       := A + B
@@ -56,6 +56,8 @@ A -> B    := A → B
 nu X .(A) := νX.A
 mu X .(A) := µX.A
 ```
+
+### Files 
 
 The general syntax of Cocktail files is: 
 
