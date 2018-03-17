@@ -1,0 +1,17 @@
+plus 
+
+where 
+
+id : \-/ A. A -> A = 
+   /\ A . \ x : A . x;
+
+succ : (mu N . 1+N) -> (mu N . 1+N) = 
+     \ x : (mu N . 1+N) . 
+         fold(inr(x,1+(mu N . 1+N)),mu N . 1+N);
+
+plus : (mu N . 1+N) -> (mu N . 1+N) -> (mu N. 1+N) = 
+     \ x : (mu N . 1+N) y : (mu N.1+N) . 
+         case unfold(x,(mu N . 1+N)) of 
+           { inl(z) => (id [mu N. 1+N]) y
+           | inr(x') => succ (plus ((id [mu N. 1+N]) x') ((id [mu N. 1+N]) y))};
+     

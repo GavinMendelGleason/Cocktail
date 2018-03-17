@@ -1,0 +1,14 @@
+plus
+
+where 
+
+succ : (nu N . 1+N) -> (nu N . 1+N) = 
+     \ x : (nu N . 1+N) . 
+         fold(inr(x,1+(nu N . 1+N)),nu N . 1+N);
+
+plus : (nu N . 1+N) -> (nu N . 1+N) -> (nu N. 1+N) = 
+     \ x : (nu N . 1+N) y : (nu N.1+N) . 
+         case unfold(x,(nu N . 1+N)) of 
+           { inl(z) => y  
+           | inr(x') => succ (plus x' y)};
+     

@@ -1,0 +1,27 @@
+\ n : (mu N . 1+N) . or (even n) (odd n)
+
+where 
+
+false : (nu N . 1+N) = false; 
+true : (nu N . 1+N) = fold(inr(true,1+(nu N . 1+N)),(nu N . 1+N));
+
+odd : (mu N . 1+N) -> (nu N . 1+N) = 
+    \ x : (mu N . 1+N) . 
+        case unfold(x,(mu N . 1+N)) of 
+	   { inl(z) => false 
+	   | inr(x') => even x}; 
+
+even : (mu N . 1+N) -> (nu N . 1+N) = 
+    \ x : (mu N . 1+N) . 
+        case unfold(x,(mu N . 1+N)) of 
+	   { inl(z) => true
+	   | inr(x') => odd x};
+
+or : (nu N . 1+N) -> (nu N . 1+N) -> (nu N . 1+N) = 
+   \ x : (nu N . 1+N) y : (nu N . 1+N) . 
+       case unfold(x,(nu N . 1+N)) of 
+          { inl(z) => true 
+	  | inr(x') => case unfold(y,(nu N.1+N)) of 
+	                  { inl(z) => true 
+			  | inr(y') => fold(inr(or x' y',1+(nu N. 1+N)),(nu N. 1+N))}};
+      

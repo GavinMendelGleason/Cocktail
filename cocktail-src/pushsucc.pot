@@ -1,0 +1,19 @@
+pushsucc
+
+where
+
+zero : (mu N . 1+N) = fold(inl(U,1+(mu N . 1+N)), mu N . 1+N);
+
+succ : (mu N . 1+N) -> (mu N . 1+N) = 
+     \ x : (mu N . 1+N) . 
+         fold(inr(x,1+(mu N . 1+N)),mu N . 1+N);
+
+plus : (mu N . 1+N) -> (mu N . 1+N) -> (mu N. 1+N) = 
+     \ x : (mu N . 1+N) y : (mu N.1+N) . 
+         case unfold(x,(mu N . 1+N)) of 
+           { inl(z) => y  
+           | inr(x') => succ (plus x' y)};
+     
+pushsucc :  (mu N . 1+N) -> (mu N . 1+N) -> (mu N. 1+N) = 
+     \ n : (mu N . 1+N) m : (mu N.1+N) . 
+         succ (plus n m);

@@ -1,0 +1,5 @@
+case (le n') m' of 
+   {inl(t) =>
+     (snoc fold(inr(n',1 + (mu N.1 + N)),mu N.1 + N)) (g ((snoc fold(inr(m',1 + (mu N.1 + N)),mu N.1 + N)) s''))
+   |inr(f) =>
+     g ((snoc (pred fold(inr(n',1 + (mu N.1 + N)),mu N.1 + N))) ((snoc fold(inr(m',1 + (mu N.1 + N)),mu N.1 + N)) s''))}

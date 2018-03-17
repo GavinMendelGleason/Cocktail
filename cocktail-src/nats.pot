@@ -1,0 +1,24 @@
+nats
+
+where
+
+zero : (mu N . 1+N) = fold(inl(U,1+(mu N . 1+N)), mu N . 1+N);
+
+nil : (nu L . 1+((mu N . 1+N)*L)) = fold(inl(U,1+((mu N . 1+N)*(nu L . 1+((mu N . 1+N)*L)))),(nu L . 1+((mu N . 1+N)*L))); 
+
+succ : (mu N . 1+N) -> (mu N . 1+N) = 
+     \ x : (mu N . 1+N) . 
+         fold(inr(x,1+(mu N . 1+N)),mu N . 1+N);
+
+cons : (mu N. 1+N) -> (nu L . 1+((mu N . 1+N)*L)) -> (nu L . 1+((mu N . 1+N)*L)) = 
+     \ x : (mu N . 1+N) xs : (nu L . 1+((mu N . 1+N)*L)).
+       fold(inr((x,xs),1+((mu N . 1+N)*(nu L . 1+((mu N . 1+N)*L)))),(nu L . 1+((mu N . 1+N)*L))); 
+
+map : ((mu N. 1+N) -> (mu N.1+N)) -> (nu L . 1+((mu N . 1+N)*L)) -> (nu L . 1+((mu N . 1+N)*L)) = 
+    \ f : ((mu N. 1+N) -> (mu N.1+N)) xs : (nu L . 1+((mu N . 1+N)*L)) . 
+      case unfold(xs,(nu L . 1+((mu N . 1+N)*L))) of 
+        { inl(e) => nil
+        | inr(p) => split p as (x,xs') 
+	            in { cons (f x) (map f xs') }};
+
+nats : (nu L . 1+((mu N . 1+N)*L)) = cons zero (map succ nats);

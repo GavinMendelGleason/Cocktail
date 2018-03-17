@@ -1,0 +1,4 @@
+
+1. Generalisation and bound variables wrong, bound variables can be lifted from a context. 
+2. Instantiation and bound variables wrong, bound variables can be lifted from a context. 
+3. Totality checking at the point of branching on types needs to be made more flexible. 

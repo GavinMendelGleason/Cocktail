@@ -1,0 +1,28 @@
+plus 
+
+where 
+
+plus : (nu X . 1+X) -> (nu X . 1+X) -> (nu X. 1+X) = 
+     \ x : (nu X . 1+X) y : (nu X.1+X) . 
+         case unfold(x,(nu X . 1+X)) of 
+           { inl(z) => y  
+           | inr(x') => fold(inr(plus x' y,1+(nu X . 1+X)),nu X . 1+X) };
+     
+true : 1+1 = inr(U,1+1);
+false : 1+1 = inl(U,1+1);
+
+max : (nu X . 1+X) -> (nu X . 1+X) -> (nu X. 1+X) = 
+    \ x : (nu X . 1+X) y : (nu X . 1+X) . 
+        case unfold(x,nu X . 1+X) of 
+	  { inl(z) => y 
+          | inr(x') => case unfold(y, nu X. 1+X) of 
+	                 { inl(z) => x 
+                         | inr(y') => fold(inr(max x' y',1+(nu X.1+X)),nu X . 1+X) } };
+
+nil : (\-/ A . nu L. 1 + (A * L)) = 
+    /\ A . 
+         fold(inl(U,1+(A * (nu L . 1 + A*L))), nu L . 1 + A*L);
+
+cons : (\-/ A . A -> (nu L. 1 + (A * L)) -> nu L. 1 + (A * L)) = 
+     /\ A . \ x : A  xs : (nu L. 1 + (A * L)) .  
+          fold(inr((x,xs), 1 + (A * (nu L . 1 + (A*L)))), (nu L . 1 + (A*L)));

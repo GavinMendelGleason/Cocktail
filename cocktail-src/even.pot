@@ -1,0 +1,14 @@
+even
+
+where 
+
+true : 1+1 = inl(U,1+1);
+false : 1+1 = inr(U,1+1);
+
+even : (mu N . 1+N) -> (1+1) = 
+     \ x : (mu N . 1+N) . 
+        case unfold(x, (mu N.1+N)) of 
+	 { inl(z) => inl(U,1+1)
+	 | inr(x') => case even x' of 
+	               { inl(t) => inr(U,1+1)
+		       | inr(f) => inl(U,1+1)}};

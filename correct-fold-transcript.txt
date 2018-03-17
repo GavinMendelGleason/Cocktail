@@ -1,0 +1,1695 @@
+Poitin> :load stream.pot
+Loading file: stream.pot
+Functions are type correct
+Term is type correct
+Poitin> :total
+Unable to find a total proof
+Poitin> :term
+g
+Poitin> :unfold 
+\ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :down
+split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :down 1
+split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+Poitin> :down 1
+case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+Poitin> :unfold
+case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :down 1
+case true of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+Poitin> :unfold
+(snoc n) (g ((snoc m) s''))
+Poitin> :unfold
+fold((n,(g ((snoc m) s''))),nu S.(mu N.1 + N) * S)
+Poitin> :down 
+(n,(g ((snoc m) s'')))
+Poitin> :down 1
+g ((snoc m) s'')
+Poitin> :unfold
+split unfold((snoc m) s'',nu S0.(mu N.1 + N) * S0)
+as (n,s')
+in {split unfold(s',nu S0.(mu N.1 + N) * S0)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :direct 0
+Error: Could not parse command, type ':help' for a list of commands
+Poitin> :down 0
+unfold((snoc m) s'',nu S0.(mu N.1 + N) * S0)
+Poitin> :down
+(snoc m) s''
+Poitin> :unfold
+fold((m,s''),nu S0.(mu N.1 + N) * S0)
+Poitin> :up
+(snoc m) s''
+
+  ~>
+
+    fold((m,s''),nu S0.(mu N.1 + N) * S0)
+Poitin> :up
+unfold((snoc m) s'',nu S0.(mu N.1 + N) * S0)
+Poitin> :up
+split unfold((snoc m) s'',nu S0.(mu N.1 + N) * S0)
+as (n,s')
+in {split unfold(s',nu S0.(mu N.1 + N) * S0)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :down 1
+split unfold(s',nu S0.(mu N.1 + N) * S0)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+Poitin> :down 1
+case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+Poitin> :history
+1. split unfold(s',nu S0.(mu N.1 + N) * S0)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+2. split unfold((snoc m) s'',nu S0.(mu N.1 + N) * S0)
+as (n,s')
+in {split unfold(s',nu S0.(mu N.1 + N) * S0)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+3. g ((snoc m) s'')
+4. (n,(g ((snoc m) s'')))
+5. fold((n,(g ((snoc m) s''))),nu S.(mu N.1 + N) * S)
+6. (snoc n) (g ((snoc m) s''))
+7. case true of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+8. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+9. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+10. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+11. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+12. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+13. g
+
+Poitin> :fold 9
+#8 case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+
+1. s''
+2. m
+3. n
+
+Poitin> :up
+split unfold(s',nu S0.(mu N.1 + N) * S0)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+Poitin> :up
+split unfold((snoc m) s'',nu S0.(mu N.1 + N) * S0)
+as (n,s')
+in {split unfold(s',nu S0.(mu N.1 + N) * S0)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :up
+g ((snoc m) s'')
+
+  ~>
+
+    split unfold((snoc m) s'',nu S0.(mu N.1 + N) * S0)
+    as (n,s')
+    in {split unfold(s',nu S0.(mu N.1 + N) * S0)
+        as (m,s'')
+        in {case (le n) m of 
+               {inl(t) =>
+                 (snoc n) (g ((snoc m) s''))
+               |inr(f) =>
+                 g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :up
+(n,(g ((snoc m) s'')))
+Poitin> :up
+fold((n,(g ((snoc m) s''))),nu S.(mu N.1 + N) * S)
+Poitin> :up
+(snoc n) (g ((snoc m) s''))
+
+  ~>
+
+    fold((n,(g ((snoc m) s''))),nu S.(mu N.1 + N) * S)
+Poitin> :up
+case true of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+
+  ~>
+
+    (snoc n) (g ((snoc m) s''))
+Poitin> :up
+case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :down 2
+case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+Poitin> :down 1
+case false of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+Poitin> :unfold
+g ((snoc (pred n)) ((snoc m) s''))
+Poitin> :history
+1. case false of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+2. case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+3. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+4. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+5. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+6. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+7. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+8. g
+
+Poitin> :term
+g ((snoc (pred n)) ((snoc m) s''))
+Poitin> :unfold
+split unfold((snoc (pred n)) ((snoc m) s''),nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :direct 0
+Error: Could not parse command, type ':help' for a list of commands
+Poitin> :down 0
+unfold((snoc (pred n)) ((snoc m) s''),nu S.(mu N.1 + N) * S)
+Poitin> :down
+(snoc (pred n)) ((snoc m) s'')
+Poitin> :unfold
+fold(((pred n),((snoc m) s'')),nu S.(mu N.1 + N) * S)
+Poitin> :down 0
+((pred n),((snoc m) s''))
+Poitin> :unfold 
+((pred n),((snoc m) s''))
+Poitin> :down 
+pred n
+Poitin> :unfold
+case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     n
+   |inr(n') =>
+     n'}
+Poitin> :up
+pred n
+
+  ~>
+
+    case unfold(n,mu N.1 + N) of 
+       {inl(z) =>
+         n
+       |inr(n') =>
+         n'}
+Poitin> :up
+((pred n),((snoc m) s''))
+Poitin> :down 1
+(snoc m) s''
+Poitin> :unfold
+fold((m,s''),nu S0.(mu N.1 + N) * S0)
+Poitin> :up
+(snoc m) s''
+
+  ~>
+
+    fold((m,s''),nu S0.(mu N.1 + N) * S0)
+Poitin> :up
+((pred n),((snoc m) s''))
+Poitin> :up
+((pred n),((snoc m) s''))
+
+  ~>
+
+    ((pred n),((snoc m) s''))
+Poitin> :up
+fold(((pred n),((snoc m) s'')),nu S.(mu N.1 + N) * S)
+Poitin> :up
+(snoc (pred n)) ((snoc m) s'')
+
+  ~>
+
+    fold(((pred n),((snoc m) s'')),nu S.(mu N.1 + N) * S)
+Poitin> :up
+unfold((snoc (pred n)) ((snoc m) s''),nu S.(mu N.1 + N) * S)
+Poitin> :up
+split unfold((snoc (pred n)) ((snoc m) s''),nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :down 1
+split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+Poitin> :down 1
+case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+Poitin> :history
+1. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+2. split unfold((snoc (pred n)) ((snoc m) s''),nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+3. g ((snoc (pred n)) ((snoc m) s''))
+4. case false of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+5. case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+6. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+7. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+8. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+9. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+10. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+11. g
+
+Poitin> :fold 7
+#6 case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+
+1. s''
+2. m
+3. n
+
+Poitin> :up
+split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+Poitin> :up
+split unfold((snoc (pred n)) ((snoc m) s''),nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :up
+g ((snoc (pred n)) ((snoc m) s''))
+
+  ~>
+
+    split unfold((snoc (pred n)) ((snoc m) s''),nu S.(mu N.1 + N) * S)
+    as (n,s')
+    in {split unfold(s',nu S.(mu N.1 + N) * S)
+        as (m,s'')
+        in {case (le n) m of 
+               {inl(t) =>
+                 (snoc n) (g ((snoc m) s''))
+               |inr(f) =>
+                 g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :up
+case false of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+
+  ~>
+
+    g ((snoc (pred n)) ((snoc m) s''))
+Poitin> :up
+case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+Poitin> :down 2
+case (le n') m' of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+Poitin> :term
+case (le n') m' of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+Poitin> :history
+1. case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+2. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+3. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+4. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+5. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+6. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+7. g
+
+Poitin> :generalise 3
+(((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m') n'
+Poitin> :down
+((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m'
+Poitin> :down
+(((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n
+Poitin> :down
+((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m
+Poitin> :down
+(\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s''
+Poitin> :down
+\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :down
+\ v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :down
+\ v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :down
+\ v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :down
+\ v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :down
+case (le v0) v1 of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :unfold
+case unfold(v0,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(n') =>
+     case unfold(v1,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}}}
+Poitin> :down 1
+case true of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :unfold
+(snoc v2) (g ((snoc v3) v4))
+Poitin> :unfold
+fold((v2,(g ((snoc v3) v4))),nu S.(mu N.1 + N) * S)
+Poitin> :down 
+(v2,(g ((snoc v3) v4)))
+Poitin> :down 1
+g ((snoc v3) v4)
+Poitin> :history
+1. (v2,(g ((snoc v3) v4)))
+2. fold((v2,(g ((snoc v3) v4))),nu S.(mu N.1 + N) * S)
+3. (snoc v2) (g ((snoc v3) v4))
+4. case true of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+5. case unfold(v0,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(n') =>
+     case unfold(v1,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}}}
+6. case (le v0) v1 of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+7. \ v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+8. \ v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+9. \ v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+10. \ v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+11. \ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+12. (\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s''
+13. ((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m
+14. (((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n
+15. ((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m'
+16. (((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m') n'
+17. case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+18. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+19. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+20. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+21. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+22. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+23. g
+
+Poitin> :term
+g ((snoc v3) v4)
+Poitin> :unfold g
+Error: Could not parse command, type ':help' for a list of commands
+Poitin> :unfold
+split unfold((snoc v3) v4,nu S0.(mu N.1 + N) * S0)
+as (n,s')
+in {split unfold(s',nu S0.(mu N.1 + N) * S0)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :history
+1. g ((snoc v3) v4)
+2. (v2,(g ((snoc v3) v4)))
+3. fold((v2,(g ((snoc v3) v4))),nu S.(mu N.1 + N) * S)
+4. (snoc v2) (g ((snoc v3) v4))
+5. case true of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+6. case unfold(v0,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(n') =>
+     case unfold(v1,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}}}
+7. case (le v0) v1 of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+8. \ v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+9. \ v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+10. \ v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+11. \ v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+12. \ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+13. (\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s''
+14. ((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m
+15. (((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n
+16. ((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m'
+17. (((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m') n'
+18. case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+19. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+20. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+21. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+22. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+23. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+24. g
+
+Poitin> :fold 22
+#21 split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+
+1. (snoc v3) v4
+
+Poitin> :up
+g ((snoc v3) v4)
+
+  ~>
+
+    split unfold(s,nu S.(mu N.1 + N) * S)
+    as (n,s')
+    in {split unfold(s',nu S.(mu N.1 + N) * S)
+        as (m,s'')
+        in {case (le n) m of 
+               {inl(t) =>
+                 (snoc n) (g ((snoc m) s''))
+               |inr(f) =>
+                 g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :up
+(v2,(g ((snoc v3) v4)))
+Poitin> :up
+fold((v2,(g ((snoc v3) v4))),nu S.(mu N.1 + N) * S)
+Poitin> :up
+(snoc v2) (g ((snoc v3) v4))
+
+  ~>
+
+    fold((v2,(g ((snoc v3) v4))),nu S.(mu N.1 + N) * S)
+Poitin> :up
+case true of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+
+  ~>
+
+    (snoc v2) (g ((snoc v3) v4))
+Poitin> :up
+case unfold(v0,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(n') =>
+     case unfold(v1,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}}}
+Poitin> :down 2
+case unfold(v1,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}}
+Poitin> :down 1
+case false of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :unfold
+g ((snoc (pred v2)) ((snoc v3) v4))
+Poitin> :unfold
+split unfold((snoc (pred v2)) ((snoc v3) v4),nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :history
+1. g ((snoc (pred v2)) ((snoc v3) v4))
+2. case false of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+3. case unfold(v1,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}}
+4. case unfold(v0,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(n') =>
+     case unfold(v1,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}}}
+5. case (le v0) v1 of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+6. \ v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+7. \ v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+8. \ v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+9. \ v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+10. \ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+11. (\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s''
+12. ((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m
+13. (((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n
+14. ((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m'
+15. (((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m') n'
+16. case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+17. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+18. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+19. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+20. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+21. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+22. g
+
+Poitin> :term
+split unfold((snoc (pred v2)) ((snoc v3) v4),nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :fold 20
+#19 split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+
+1. (snoc (pred v2)) ((snoc v3) v4)
+
+Poitin> :up
+g ((snoc (pred v2)) ((snoc v3) v4))
+
+  ~>
+
+    split unfold(s,nu S.(mu N.1 + N) * S)
+    as (n,s')
+    in {split unfold(s',nu S.(mu N.1 + N) * S)
+        as (m,s'')
+        in {case (le n) m of 
+               {inl(t) =>
+                 (snoc n) (g ((snoc m) s''))
+               |inr(f) =>
+                 g ((snoc (pred n)) ((snoc m) s''))}}}
+Poitin> :up
+case false of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+
+  ~>
+
+    g ((snoc (pred v2)) ((snoc v3) v4))
+Poitin> :up
+case unfold(v1,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}}
+Poitin> :down 2
+case (le n') m' of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+Poitin> :history
+1. case unfold(v1,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}}
+2. case unfold(v0,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc v2) (g ((snoc v3) v4))
+        |inr(f) =>
+          g ((snoc (pred v2)) ((snoc v3) v4))}
+   |inr(n') =>
+     case unfold(v1,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc v2) (g ((snoc v3) v4))
+             |inr(f) =>
+               g ((snoc (pred v2)) ((snoc v3) v4))}}}
+3. case (le v0) v1 of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+4. \ v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+5. \ v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+6. \ v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+7. \ v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+8. \ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}
+9. (\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s''
+10. ((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m
+11. (((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n
+12. ((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m'
+13. (((((\ v4:(nu S.(mu N.1 + N) * S) v3:(mu N.1 + N) v2:(mu N.1 + N) v1:(mu N.1 + N) v0:(mu N.1 + N).
+   case (le v0) v1 of 
+      {inl(t) =>
+        (snoc v2) (g ((snoc v3) v4))
+      |inr(f) =>
+        g ((snoc (pred v2)) ((snoc v3) v4))}) s'') m) n) m') n'
+14. case unfold(m,mu N.1 + N) of 
+   {inl(z) =>
+     case false of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(m') =>
+     case (le n') m' of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}}
+15. case unfold(n,mu N.1 + N) of 
+   {inl(z) =>
+     case true of 
+        {inl(t) =>
+          (snoc n) (g ((snoc m) s''))
+        |inr(f) =>
+          g ((snoc (pred n)) ((snoc m) s''))}
+   |inr(n') =>
+     case unfold(m,mu N.1 + N) of 
+        {inl(z) =>
+          case false of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}
+        |inr(m') =>
+          case (le n') m' of 
+             {inl(t) =>
+               (snoc n) (g ((snoc m) s''))
+             |inr(f) =>
+               g ((snoc (pred n)) ((snoc m) s''))}}}
+16. case (le n) m of 
+   {inl(t) =>
+     (snoc n) (g ((snoc m) s''))
+   |inr(f) =>
+     g ((snoc (pred n)) ((snoc m) s''))}
+17. split unfold(s',nu S.(mu N.1 + N) * S)
+as (m,s'')
+in {case (le n) m of 
+       {inl(t) =>
+         (snoc n) (g ((snoc m) s''))
+       |inr(f) =>
+         g ((snoc (pred n)) ((snoc m) s''))}}
+18. split unfold(s,nu S.(mu N.1 + N) * S)
+as (n,s')
+in {split unfold(s',nu S.(mu N.1 + N) * S)
+    as (m,s'')
+    in {case (le n) m of 
+           {inl(t) =>
+             (snoc n) (g ((snoc m) s''))
+           |inr(f) =>
+             g ((snoc (pred n)) ((snoc m) s''))}}}
+19. \ s:(nu S.(mu N.1 + N) * S).
+   split unfold(s,nu S.(mu N.1 + N) * S)
+   as (n,s')
+   in {split unfold(s',nu S.(mu N.1 + N) * S)
+       as (m,s'')
+       in {case (le n) m of 
+              {inl(t) =>
+                (snoc n) (g ((snoc m) s''))
+              |inr(f) =>
+                g ((snoc (pred n)) ((snoc m) s''))}}}
+20. g
+
+Poitin> :fold 3
+#2 case (le v0) v1 of 
+   {inl(t) =>
+     (snoc v2) (g ((snoc v3) v4))
+   |inr(f) =>
+     g ((snoc (pred v2)) ((snoc v3) v4))}
+
+1. v4
+2. v3
+3. v2
+4. m'
+5. n'
+
+Poitin> :top

@@ -1,0 +1,4 @@
+module Hack where 
+
+output = ""
+

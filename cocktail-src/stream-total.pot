@@ -1,0 +1,50 @@
+f
+where
+
+zero : (mu N.1+N) = 
+     fold(inl(U,1+(mu N.1+N)),(mu N.1+N));
+
+succ : (mu N.1+N) -> (mu N.1+N) = 
+     \ n : (mu N.1+N) . 
+     fold(inr(n,1+(mu N.1+N)),(mu N.1+N));
+
+cons : (mu N.1+N) -> (nu S. (mu N.1 + N) * S) -> (nu S. (mu N.1 + N) * S) = 
+   \ n : (mu N.1+N) s : (nu S. (mu N.1 + N) * S) . 
+       fold((n,s),(nu S. (mu N.1 + N) * S));
+
+f : (nu S. (mu N.1 + N) * S) -> (nu S. (mu N.1 + N) * S) = 
+  \ s : (nu S. (mu N.1 + N) * S). 
+  split (unfold(s,(nu S. (mu N.1 + N) * S))) 
+  as (x,s')
+  in { g x s' };
+
+g : (mu N.1 + N) -> (nu S. (mu N.1 + N) * S) -> (nu S. (mu N.1 + N) * S) =
+  \ x : (mu N.1+N) s : (nu S. (mu N.1 + N) * S). 
+  split (unfold(s,(nu S. (mu N.1 + N) * S)))
+  as (y,s') 
+  in { case (unfold(x,(mu N.1 + N))) of 
+         {inl(z) => cons x (g y s')
+	 |inr(x') => 
+	   case (unfold(y,(mu N.1 + N))) of 
+	   {inl(z) => h x y s'
+	   |inr(y') => i x y x y s' } } };
+
+h : (mu N.1 + N) -> (mu N.1 + N) -> (nu S. (mu N.1 + N) * S) -> (nu S. (mu N.1 + N) * S) =
+  \ x : (mu N.1+N) y : (mu N.1+N) s : (nu S. (mu N.1 + N) * S). 
+  case (unfold(x,(mu N.1+N))) of 
+    {inl(z) => cons zero (g y s)
+    |inr(x') => 
+    case (unfold(x',(mu N.1+N))) of 
+      {inl(z) => cons (succ zero) (g y s)
+      |inr(x'') => 
+      case (unfold(y,(mu N.1+N))) of
+        {inl(z) => h x zero s
+        |inr(y') => i x'' y' x y s } } };
+
+i : (mu N.1 + N) -> (mu N.1 + N) -> (mu N.1 + N) -> (mu N.1 + N) -> (nu S. (mu N.1 + N) * S) -> (nu S. (mu N.1 + N) * S) =
+  \ x':(mu N.1+N) y':(mu N.1+N) x:(mu N.1+N) y:(mu N.1+N) s : (nu S. (mu N.1 + N) * S) .
+  case (unfold(x',(mu N.1+N))) of 
+  {inl(z) => cons x (g y s) 
+  |inr(x'') => case (unfold(y',(mu N.1+N))) of 
+               {inl(z) => h x y s
+	       |inr(y'') => i x y x y s} };

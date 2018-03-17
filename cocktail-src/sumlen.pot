@@ -1,0 +1,18 @@
+sumlen
+
+where 
+
+succ : (nu N . 1+N) -> (nu N . 1+N) = 
+     \ x : (nu N . 1+N) . 
+         fold(inr(x,1+(nu N . 1+N)),nu N . 1+N);
+
+plus : (nu N . 1+N) -> (nu N . 1+N) -> (nu N. 1+N) = 
+     \ x : (nu N . 1+N) y : (nu N.1+N) . 
+         case unfold(x,(nu N . 1+N)) of 
+           { inl(z) => y  
+           | inr(x') => succ (plus x' y)};
+
+sumlen : (nu S . (nu N . 1 + N) * S) -> (nu N . 1 + N) = 
+     \ s : (nu S . (nu N . 1 + N) * S) . 
+         split unfold(s,(nu S . (nu N . 1 + N) * S)) as (n,s')
+         in { succ (plus n (sumlen s')) };

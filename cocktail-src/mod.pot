@@ -1,0 +1,32 @@
+mod 
+
+where
+
+zero : (mu X . 1 + X) = fold(inl(U,1+(mu X . 1 + X)),(mu X . 1 + X));
+
+true : 1+1 = inl(U,1+1);
+false : 1+1 = inr(U,1+1);
+
+lt : (mu X . 1 + X) -> (mu X . 1+X) -> (1+1) = 
+   \ x:(mu X . 1 + X) y:(mu X . 1 + X).	
+   case (unfold(x,(mu X . 1 + X))) of 	
+     {inl(z) => case (unfold(y,(mu X . 1 + X))) of 
+                {inl(z) => false
+		|inr(y') => true}
+     |inr(x') => case (unfold(y,(mu X . 1 + X))) of 
+                {inl(z) => false
+		|inr(y') => lt x' y'}};
+
+sub : (mu X . 1 + X) -> (mu X . 1+X) -> (mu X . 1+X) =
+    \ x:(mu X . 1 + X) y:(mu X . 1 + X).	
+    case (unfold(y,(mu X . 1 + X))) of 	
+      {inl(z) => x 
+      |inr(y') => case (unfold(x,(mu X . 1 + X))) of
+                  {inl(z) => zero
+		  |inr(x') => sub x' y'}};
+
+mod : (mu X . 1 + X) -> (mu X . 1 + X) -> (mu X . 1 + X) = 
+    \ x:(mu X . 1 + X) y:(mu X . 1 + X). 
+    case (lt x y) of 
+    {inl(t) => x
+    |inr(f) => mod (sub x y) y};

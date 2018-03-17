@@ -1,0 +1,23 @@
+app
+
+where
+
+nil : (\-/ A . (mu L. 1 + (A * L))) = /\ A . 
+     fold(inl(U, 1+ A*(mu L . 1+ (A * L) )), mu L . 1 + A*L);
+
+cons : (\-/ A . A -> (mu L. 1 + (A * L)) -> (mu L. 1 + (A * L))) = 
+     (/\ A . \ x : A   xs : (mu L. 1 + (A * L)) .  
+       fold(inr((x,xs),1 + (A * (mu L . 1 + A * L))), mu L . 1 + A*L));
+
+app : (\-/ A . (mu L. 1 + (A * L)) -> (mu L. 1 + (A * L)) -> (mu L. 1 + (A * L))) = 
+     (/\ A . \ xs : (mu L. 1 + (A * L)) ys : (mu L. 1 + (A * L)) .  
+       case unfold(xs, (mu L. 1 + (A * L))) of 
+         { inl(z) => ys
+         | inr(p) => split p as (x,xs') 
+                     in { (cons [A]) x ((app [A]) xs' ys) }});
+
+conj : (\-/ A . (mu L. 1 + (A * L)) -> A -> (mu L. 1 + (A * L)) -> (mu L. 1 + (A * L))) = 
+      (/\ A . (\ xs : (mu L. 1 + (A * L))
+                x : A 
+                zs : (mu L. 1 + (A * L)) .  
+                ((app [A]) ((app [A]) xs ((cons [A]) x (nil [A]))) zs)));

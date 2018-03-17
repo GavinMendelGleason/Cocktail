@@ -1,0 +1,36 @@
+\ n : (mu N.1+N) m : (mu N.1+N) . le (pred n) m
+where 
+
+true : 1+1 = inl(U,1+1);
+false : 1+1 = inr(U,1+1);
+
+le : (mu N.1+N) -> (mu N.1+N) -> (1+1) = 
+   \ n : (mu N.1+N) m : (mu N.1+N) .
+   case unfold(n,(mu N.1+N)) of 
+     {inl(z) => true 
+     |inr(n') => case unfold (m,(mu N.1+N)) of 
+                   {inl(z) => false 
+                   |inr(m') => le n' m'}};
+
+zero : (mu N.1+N) = 
+     fold(inl(U,1+(mu N.1+N)),(mu N.1+N));
+
+pred : (mu N.1+N) -> (mu N.1+N) = 
+   \ n : (mu N.1+N) . 
+      case unfold(n,(mu N.1+N)) of 
+        {inl(z) => zero
+	|inr(n') => n'};
+
+snoc : (mu N.1+N) -> (nu S. (mu N.1 + N) * S) -> (nu S. (mu N.1 + N) * S) = 
+   \ n : (mu N.1+N) s : (nu S. (mu N.1 + N) * S) . 
+       fold((n,s),(nu S. (mu N.1 + N) * S));
+
+g : (nu S. (mu N.1 + N) * S) -> (nu S. (mu N.1 + N) * S) = 
+   \ s : (nu S. (mu N.1 + N) * S) . 
+      split unfold(s,(nu S. (mu N.1 + N) * S))
+      as (n,s')
+      in { split unfold(s',(nu S. (mu N.1 + N) * S)) 
+           as (m,s'') 
+	   in { case le n m of 
+	          {inl(t) => snoc n (g (snoc m s''))
+                  |inr(f) => g (snoc (pred n) (snoc m s'')) }}};

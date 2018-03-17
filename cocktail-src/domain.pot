@@ -1,0 +1,7 @@
+omega fold(omega,(mu D. D -> D))
+
+where 
+
+omega : (mu D. D -> D) -> (mu D. D -> D) = 
+  \ x : (mu D. D -> D) . 
+  unfold(x,(mu D. D -> D)) x;

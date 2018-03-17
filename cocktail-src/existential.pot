@@ -1,0 +1,24 @@
+ex
+
+where 
+
+true : nu X. 1+ X = 
+     fold(inl(U,1+(nu X . 1+X)), nu X . 1 +X);
+
+delay : (nu X. 1+X) -> (nu X . 1+X) =
+    \ x : (nu X . 1+X). 
+       	fold(inr(x,1+(nu X . 1+X)), nu X . 1 +X); 
+
+min : (nu X . 1+X) -> (nu X . 1+X) -> (nu X. 1+X) = 
+    \ x : (nu X . 1+X) y : (nu X . 1+X) . 
+        case unfold(x,nu X . 1+X) of 
+	  { inl(z) => true
+          | inr(x') => case unfold(y, nu X. 1+X) of 
+	                 { inl(z) => true
+                         | inr(y') => delay (min x' y')}};
+
+ex : \-/ A . (nu S. A * S) -> (A -> nu X .1+X) -> (nu X .1+X) = 
+   /\ A . \ xs : (nu S. A * S)  P : (A -> (nu X . 1+X )) . 
+          split (unfold(xs,nu S . (A * S))) 
+	  as (x,xs') 
+	  in {delay (min (P x) ((ex [A]) xs' P)) };
