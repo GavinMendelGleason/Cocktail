@@ -30,3 +30,58 @@ Cocktail> :help
 :term		Show the present term
 Cocktail> 
 ```
+# File Syntax
+
+The intended syntax is given by the following more common symbolic forms on the right. 
+
+* Terms
+```
+\ x : (A) . r := λx : A.r
+inr(r,A)      := right(r, A)
+inl(r,A)      := left(r, A)
+(r,s)         := (r, s)
+/\ X . r      := ΛX.r
+case t of { inl(x) => r | inr(y) => s } 
+              := case t of {x ⇒ r | y ⇒ s}
+split t as (x,y) in {r} := split t as (x, y) in r
+fold(r,A) := inα(r, A)
+unfold(r,A) := outα(r, A)
+```
+* Types
+```
+A * B     := A × B
+A+B       := A + B
+A -> B    := A → B
+\-/ X . A := ∀X.A
+nu X .(A) := νX.A
+mu X .(A) := µX.A
+```
+
+The general syntax of Cocktail files is: 
+
+```
+term
+where
+ function_constant1 : type1 = term1 
+ ...
+ function_constantn : typen = termn
+```
+
+For instance, the following gives the `even` function which returns true if a natural number is even, and false if not.
+
+```
+even
+
+where 
+
+true : 1+1 = inl(U,1+1);
+false : 1+1 = inr(U,1+1);
+
+even : (mu N . 1+N) -> (1+1) = 
+     \ x : (mu N . 1+N) . 
+        case unfold(x, (mu N.1+N)) of 
+	 { inl(z) => inl(U,1+1)
+	 | inr(x') => case even x' of 
+	               { inl(t) => inr(U,1+1)
+		       | inr(f) => inl(U,1+1)}};
+```
